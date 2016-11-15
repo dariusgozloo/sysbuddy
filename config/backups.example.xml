@@ -1,0 +1,39 @@
+<backups>
+	<!-- Example for com.sysbuddy.backup.task.impl.LocalFileTask -->
+	<task>
+		<name>Local File Copies</name>
+		<type>file</type>
+		<delay>30000</delay>
+		<directory>/files/to/copy/1</directory>
+		<directory>/files/to/copy/2</directory>
+		<directory>/files/to/copy/3</directory>
+		<directory>/files/to/copy/4</directory>
+		<destination>/dir/to/backups/</destination>
+		<formatter>
+			<format>MM-dd-yyyy hh mm aaa</format>
+			<timezone>America/Chicago</timezone>
+			<prefix></prefix>
+		</formatter>
+	</task>
+	<!-- Example for com.sysbuddy.backup.task.impl.SFTPBackupTask -->
+	<task>
+		<name>Remote File Copies</name>
+		<type>sftp</type>
+		<delay>30000</delay>
+		<directory>/files/to/copy/1</directory>
+		<directory>/files/to/copy/2</directory>
+		<local_destination>/dir/to/backups/</local_destination>
+		<keep_local>true</keep_local>
+		<server>
+			<address>server here</address>
+			<user>username here</user>
+			<pass>password here</pass>
+			<destination>/remote/dir/to/backups</destination>
+		</server>
+		<formatter>
+			<format>MM-dd-yyyy hh mm aaa</format>
+			<timezone>America/Chicago</timezone>
+			<prefix></prefix>
+		</formatter>
+	</task>
+</backups>
