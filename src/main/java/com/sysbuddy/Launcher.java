@@ -3,18 +3,15 @@ package com.sysbuddy;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.xml.sax.SAXException;
 
 import com.sysbuddy.backup.BackupSchedule;
 import com.sysbuddy.backup.BackupScheduleLoader;
-import com.sysbuddy.backup.asset.impl.LocalArchiveAsset;
-import com.sysbuddy.backup.task.BackupTask;
-import com.sysbuddy.backup.task.impl.SFTPBackupTask;
 import com.sysbuddy.io.NodeParser;
 import com.sysbuddy.io.XmlParser;
-import com.sysbuddy.util.FTPCredentials;
 
 /**
  * Executor, main method class
@@ -52,17 +49,12 @@ public class Launcher {
 		logger.info("Loading configuration files..");
 		
 		File file = new File(BACKUP_DIRECTORY);
-		NodeParser parser = null;
 		
+		NodeParser parser = null;
 		try {
 			parser = new XmlParser(new FileInputStream(file));
-		} catch (FileNotFoundException | SAXException e2) {
-			e2.printStackTrace();
-		}
-		
-		if (parser == null) {
-			logger.info("There was an error loading the backup schedule configs!");
-			return;
+		} catch (FileNotFoundException | SAXException e) {
+			logger.log(Level.SEVERE, "There was an error loading the backup schedule configuration", e);
 		}
 		
 		BackupScheduleLoader backupScheduleLoader = new BackupScheduleLoader(parser);
