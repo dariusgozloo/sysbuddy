@@ -9,12 +9,8 @@ import org.xml.sax.SAXException;
 
 import com.sysbuddy.backup.BackupSchedule;
 import com.sysbuddy.backup.BackupScheduleLoader;
-import com.sysbuddy.backup.asset.impl.LocalArchiveAsset;
-import com.sysbuddy.backup.task.BackupTask;
-import com.sysbuddy.backup.task.impl.SFTPBackupTask;
 import com.sysbuddy.io.NodeParser;
 import com.sysbuddy.io.XmlParser;
-import com.sysbuddy.util.FTPCredentials;
 
 /**
  * Executor, main method class
